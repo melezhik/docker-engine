@@ -8,9 +8,6 @@ fi
 
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apt-transport-https ca-certificates
 
-echo apt-transport-https $(dpkg -s apt-transport-https|grep Status:)
-echo ca-certificates $(dpkg -s ca-certificates|grep Status:)
-
 if test $(config add_gpg_key) = "1"; then
   sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 else
@@ -27,11 +24,11 @@ fi
 
 sudo apt-get purge lxc-docker
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install linux-image-extra-$(uname -r)
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q install linux-image-extra-$(uname -r)
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apparmor
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q install apparmor
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install docker-engine
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q install docker-engine
 
 sudo service docker start
 
