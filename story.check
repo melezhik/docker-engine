@@ -8,3 +8,13 @@ my $v2 = capture()->[1];
 
 CODE
 
+#regexp: Docker Release Tool.*(imported|not changed)
+
+generator: <<CODE
+!bash
+if test -f /etc/apt/sources.list.d/docker.list; then
+  echo assert: 1 /etc/apt/sources.list.d/docker.list exists
+else
+  echo assert: 0 /etc/apt/sources.list.d/docker.list exists
+fi
+CODE
