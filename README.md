@@ -8,6 +8,9 @@ Ubuntu Trusty 14.04 (LTS)
 
 Please create an [issue](https://github.com/melezhik/docker-engine/issues)  if you need more platforms to support!
 
+# Author
+
+[Alexey Melezhik](mailto:melezhik@gmail.com)
 
 # See also
 
