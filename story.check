@@ -1,0 +1,10 @@
+regexp: kernel version:\s+(\d+)\.(\d+)
+
+generator: <<CODE
+my $v1 = capture()->[0];
+my $v2 = capture()->[1];
+
+[ "assert: ".(($v1>=3 && $v2>=13) ? 1 : 0)." you have supported kernel version" ]
+
+CODE
+
