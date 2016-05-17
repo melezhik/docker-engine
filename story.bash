@@ -6,7 +6,7 @@ else
   echo skip apt-get update due to repo_update unset
 fi
 
-sudo apt-get install apt-transport-https ca-certificates
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apt-transport-https ca-certificates
 
 echo apt-transport-https $(dpkg -s apt-transport-https|grep Status:)
 echo ca-certificates $(dpkg -s ca-certificates|grep Status:)
@@ -18,3 +18,23 @@ else
 fi
 
 sudo bash -c 'echo deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list'
+
+if test $(config repo_update) = "1"; then
+  sudo apt-get update -qq
+else
+  echo skip apt-get update due to repo_update unset
+fi
+
+sudo apt-get purge lxc-docker
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install linux-image-extra-$(uname -r)
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apparmor
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install docker-engine
+
+sudo service docker start
+
+sudo docker run hello-world
+
+
