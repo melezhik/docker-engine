@@ -4,7 +4,8 @@ Installs docker engine on your linux box
 
 # Platforms supported
 
-Ubuntu Trusty 14.04 (LTS)
+* Ubuntu Trusty 14.04 (LTS)
+* Debian 8.0 Jessie 
 
 Please create an [issue](https://github.com/melezhik/docker-engine/issues)  if you need more platforms to support!
 
